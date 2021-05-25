@@ -1,42 +1,29 @@
-#include <unistd.h>
-#include <stdio.h>
+#include "./push_swap.h"
 
-int is_digit(char *s)
+
+int is_sorted(stack s)
 {
-	int i;
-
-	i = 0;
-	while (s[i])
+	int i = 0;
+	if (s.sb < s.size)
+		return (0);
+	while (i < s.size - 1)
 	{
-		if (s[i] < 48 && s[i] > 57 && s[i] != 45)
-			return (1);
-		i++;
+		if (s.list[i] > s.list[i + 1])
+			i++;
+		else
+			return (0);
 	}
-	return (0);
+	return (1);
 }
-
-int check_args(char **args)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (args[i])
-	{
-		if (!is_digit(args[i]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 
 int main(int argc, char **argv)
 {
-	if (argc < 2)
-		return (0);
-	printf("%s\n", argv[1]);
-	printf("%d\n", is_digit(argv[1]));
+	stack s;
 
-	return (0);
+	if (argc == 1)
+		return (0);
+	create_stack(&s, argc, argv);
+	
+	free(s.list);
+	return 0;
 }
