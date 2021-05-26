@@ -24,6 +24,7 @@ void			print_stack(stack s);
 void			swap(int *a, int *b);
 void			rotate_right(int *arr, int size);
 void			rotate_left(int *arr, int size);
+int				is_sorted(stack s);
 void			pb(stack *s);
 void			pa(stack *s);
 void			sa(stack *s);
@@ -35,5 +36,8 @@ void			rr(stack *s);
 void			rra(stack *s);
 void			rrb(stack *s);
 void			rrr(stack *s);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
+void			bubble_sort(int *arr, int n);
+int				*intdup(const int *src, size_t len);
 
 #endif

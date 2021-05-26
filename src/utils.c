@@ -66,3 +66,52 @@ int			ft_atoi(const char *str, int *valid)
 	}
 	return (r * p);
 }
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t i;
+
+	if (!src && !dst)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		*((char*)dst + i) = *((char*)src + i);
+		i++;
+	}
+	return (dst);
+}
+
+void bubble_sort(int *arr, int n)
+{
+	int i;
+	int j;
+	int swp;
+
+	i = 0;
+	while (i < n)
+	{
+		j= 0;
+		swp = 0;
+		while (j < n - i - 1)
+		{
+			if (arr[j] > arr[j+1])
+			{
+				swap(&arr[j], &arr[j+1]);
+				swp = 1;
+			}
+			j++;
+		}
+		if (swp == 0)
+			return;
+		i++;
+	}
+}
+
+int * intdup(const int *src, size_t len)
+{
+   int * p = malloc(len * sizeof(int));
+   ft_memcpy(p, src, len * sizeof(int));
+   return p;
+}
+

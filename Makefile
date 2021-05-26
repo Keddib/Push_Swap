@@ -1,10 +1,10 @@
-NAME			= checker
+NAME			= push_swap
 
 GCC				= gcc -Wall -Wextra -Werror
 
 SRC				= src
 
-SRCS			= checker.c							\
+SRCS			= push_swap.c							\
 				$(SRC)/stack.c						\
 				$(SRC)/utils.c						\
 				$(SRC)/operations.c					\
