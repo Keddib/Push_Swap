@@ -4,7 +4,7 @@ GCC				= gcc -Wall -Wextra -Werror
 
 SRC				= src
 
-SRCS			= push_swap.c							\
+SRCS			= push_swap.c						\
 				$(SRC)/stack.c						\
 				$(SRC)/utils.c						\
 				$(SRC)/operations.c					\

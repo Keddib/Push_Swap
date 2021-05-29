@@ -29,7 +29,7 @@ int			ft_isnum(const char *s)
 	return (1);
 }
 
-int			not_dup(stack s, int i, int num)
+int			not_dup(data s, int i, int num)
 {
 	i++;
 	while (i < s.size)
@@ -95,7 +95,7 @@ void bubble_sort(int *arr, int n)
 		swp = 0;
 		while (j < n - i - 1)
 		{
-			if (arr[j] > arr[j+1])
+			if (arr[j] < arr[j+1])
 			{
 				swap(&arr[j], &arr[j+1]);
 				swp = 1;
@@ -115,3 +115,65 @@ int * intdup(const int *src, size_t len)
    return p;
 }
 
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t			i;
+	unsigned char	*s;
+	unsigned char	*z;
+
+	s = (unsigned char*)s1;
+	z = (unsigned char*)s2;
+	if (!s1 && !s2)
+		return (0);
+	i = 0;
+	while (s[i] != '\0' || z[i] != '\0')
+	{
+		if (s[i] - z[i] != 0)
+			return (s[i] - z[i]);
+		i++;
+	}
+	return (*s1 - *s2);
+}
+
+t_partition	*ft_lstnew(int f, int l)
+{
+	t_partition *P;
+
+	if (!(P = malloc(sizeof(t_partition))))
+		return (NULL);
+	P->index[0] = f;
+	P->index[1] = l;
+	P->status = 'n';
+	P->next = NULL;
+	return (P);
+}
+
+void	ft_lstadd_front(t_partition **alst, t_partition *new)
+{
+	new->next = *alst;
+	*alst = new;
+}
+
+void	ft_lstdelete_front(t_partition **alst)
+{
+	t_partition *todelete;
+
+	todelete = *alst;
+	*alst = (*alst)->next;
+	free(todelete);
+}
+
+int		ft_lstsize(t_partition *lst)
+{
+	t_partition	*head;
+	int		count;
+
+	head = lst;
+	count = 0;
+	while (head != NULL)
+	{
+		count++;
+		head = head->next;
+	}
+	return (count);
+}

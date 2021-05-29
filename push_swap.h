@@ -6,38 +6,57 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-typedef struct	s_stack
+
+typedef struct	s_partition
 {
-	int *list;
-	int size;
-	int sb;
-	int tmp;
-}				stack;
+	int			index[2];
+	char		status;
+	struct		s_partition *next;
+}				t_partition;
+
+
+typedef struct	s_data
+{
+	int			*list;
+	int			*tmp;
+	int			size;
+	int			sb;
+	t_partition	*PA;
+	t_partition *PB;
+}				data;
 
 int				ft_atoi(const char *str, int *valid);
 int				ft_isnum(const char *s);
 int				ft_isdigit(int c);
-int				not_dup(stack s, int i, int num);
+int				ft_strcmp(const char *s1, const char *s2);
+int				*intdup(const int *src, size_t len);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
+t_partition		*ft_lstnew(int f, int l);
+void			ft_lstadd_front(t_partition **alst, t_partition *new);
+void			ft_lstdelete_front(t_partition **alst);
+int				ft_lstsize(t_partition *lst);
 void			ft_exit(void);
-void			create_stack(stack *s, int argc, char **argv);
-void			print_stack(stack s);
+int				not_dup(data s, int i, int num);
+void			create_stack(data *s, int argc, char **argv);
+void			print_stack(data s);
 void			swap(int *a, int *b);
 void			rotate_right(int *arr, int size);
 void			rotate_left(int *arr, int size);
-int				is_sorted(stack s);
-void			pb(stack *s);
-void			pa(stack *s);
-void			sa(stack *s);
-void			sb(stack *s);
-void			ss(stack *s);
-void			ra(stack *s);
-void			rb(stack *s);
-void			rr(stack *s);
-void			rra(stack *s);
-void			rrb(stack *s);
-void			rrr(stack *s);
-void			*ft_memcpy(void *dst, const void *src, size_t n);
+int				is_sorted(data s);
 void			bubble_sort(int *arr, int n);
-int				*intdup(const int *src, size_t len);
+int				is_p_sorted(int *l, t_partition *p);
+void			pb(data *s);
+void			pa(data *s);
+void			sa(data *s);
+void			sb(data *s);
+void			ss(data *s);
+void			ra(data *s);
+void			rb(data *s);
+void			rr(data *s);
+void			rra(data *s);
+void			rrb(data *s);
+void			rrr(data *s);
+
+void	print_array(int *arr, int size);
 
 #endif

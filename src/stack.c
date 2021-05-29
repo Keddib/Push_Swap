@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-int is_sorted(stack s)
+int is_sorted(data s)
 {
 	int i = 0;
 	if (s.sb < s.size)
@@ -57,7 +57,7 @@ void	rotate_left(int *arr, int size)
 }
 
 
-void	create_stack(stack *s, int argc, char **argv)
+void	create_stack(data *s, int argc, char **argv)
 {
 	int i;
 	int valid;
@@ -72,17 +72,16 @@ void	create_stack(stack *s, int argc, char **argv)
 	while (*argv)
 	{
 		num = ft_atoi(*argv, &valid);
-		if (valid && not_dup(*s, i, num))
+		if (valid && not_dup(*s, i, num) && ft_strcmp(*argv, "-") != 0)
 			s->list[i] = num;
 		else
 			ft_exit();
 		argv++;
 		i--;
 	}
-	return;
 }
 
-void	print_stack(stack s)
+void	print_stack(data s)
 {
 	printf("A| ");
 	int i = s.sb - 1;
@@ -112,4 +111,21 @@ void	print_stack(stack s)
 		j++;
 	}
 	printf("\n\n\n");
+}
+
+int 	is_p_sorted(int *l, t_partition *p)
+{
+	int *tmp = l + p->index[0];
+	int size = p->index[1] - p->index[0];
+	int i = 0;
+	if (size == 1)
+		return 1;
+	while (i < size)
+	{
+		if (tmp[i] > tmp[i + 1])
+			i++;
+		else
+			return (0);
+	}
+	return (1);
 }
