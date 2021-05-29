@@ -1,7 +1,7 @@
 #include "./push_swap.h"
 
 
-void do_operation(char *str, data *s)
+void do_operation(char *str, t_data*s)
 {
 	s->size++;
 	printf("s = %s\n", str);
@@ -10,7 +10,7 @@ void do_operation(char *str, data *s)
 
 int main(int argc, char **argv)
 {
-	data s;
+	t_datas;
 	char *inst;
 
 	inst = NULL;
