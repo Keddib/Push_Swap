@@ -6,7 +6,7 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 18:44:04 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/30 15:46:17 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/30 18:51:49 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 typedef struct	s_partition
 {
 	int					index[2];
-	char				status;
+	char				s;
 	struct s_partition	*next;
 }				t_partition;
 
@@ -61,6 +61,9 @@ void			bubble_sort(int *arr, int n);
 int				is_p_sorted(int *l, t_partition *p);
 void			free_data(t_data *d);
 int				get_pivo(t_data d, int side, int *pd);
+void			add_partition(t_data *d, int p);
+int				push(t_data *d, int a);
+void			three_numbers(t_data *d);
 void			pb(t_data*s, int t);
 void			pa(t_data*s, int t);
 void			sa(t_data*s, int t);

@@ -6,7 +6,7 @@
 #    By: keddib <keddib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/29 18:44:12 by keddib            #+#    #+#              #
-#    Updated: 2021/05/30 17:54:12 by keddib           ###   ########.fr        #
+#    Updated: 2021/05/30 18:52:17 by keddib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,14 @@ PS				= push_swap
 
 CHECKER			= checker
 
-GCC				= gcc -Wall -Wextra -Werror
+GCC				= gcc -Wall -Wextra -Werror -g -fsanitize=address
 
 SRC				= src
 
 GNL				= gn_line/get_next_line.c gn_line/get_next_line_utils.c
 
 SRCS			= push_swap.c						\
+				push_swap_utils.c					\
 				$(SRC)/stack.c						\
 				$(SRC)/utils.c						\
 				$(SRC)/utils_2.c					\

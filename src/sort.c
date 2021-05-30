@@ -6,7 +6,7 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 19:55:14 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/30 12:39:40 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/30 18:48:31 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ int		is_p_sorted(int *l, t_partition *p)
 	i = 0;
 	if (size == 1)
 	{
-		p->status = 's';
+		p->s = 's';
 		return (1);
 	}
-	while (i < size)
+	while (i < size - 1)
 	{
 		if (tmp[i] > tmp[i + 1])
 			i++;
 		else
 			return (0);
 	}
-	p->status = 's';
+	p->s = 's';
 	return (1);
 }
 

@@ -6,15 +6,17 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 18:43:46 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/30 16:41:45 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/30 18:51:07 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	B_to_A_direct(t_data*d)
+int		b_to_a_direct(t_data *d)
 {
-	int i = 0;
+	int i;
+
+	i = 0;
 	while (i < d->pb->index[1] - d->pb->index[0])
 	{
 		pa(d, 1);
@@ -22,77 +24,49 @@ void	B_to_A_direct(t_data*d)
 		i++;
 	}
 	ft_lstdelete_front(&d->pb);
+	return (1);
 }
 
-void	B_to_A(t_data*d)
+void	b_to_a(t_data *d)
 {
 	int			p;
 	int			pd;
 	int			rotate;
-	t_partition	*na;
 
 	rotate = 0;
-	is_p_sorted(d->list, d->pb);
-	if (d->pb->status == 'n' && (d->pb->index[1] - d->pb->index[0]) == 2)
+	if (d->pb->s == 's' && b_to_a_direct(d))
+		return ;
+	add_partition(d, 0);
+	p = get_pivo(*d, 1, &pd);
+	while (pd > 0)
 	{
-		sb(d, 1);
-		d->pb->status = 's';
-	}
-	else if (d->pb->status == 's')
-	{
-		na = ft_lstnew(d->pa->index[1], d->pa->index[1]);
-		ft_lstadd_front(&d->pa, na);
-		B_to_A_direct(d);
-	}
-	else
-	{
-		na = ft_lstnew(d->pa->index[1], d->pa->index[1]);
-		ft_lstadd_front(&d->pa, na);
-		p = get_pivo(*d, 1, &pd);
-		while (pd > 0)
+		if (d->list[d->sb] > p && push(d, 0))
+			pd--;
+		else
 		{
-			if (d->list[d->sb] > p)
-			{
-				pa(d, 1);
-				d->pb->index[0] += 1;
-				d->pa->index[1] += 1;
-				pd--;
-			}
-			else
-			{
-				rb(d, 1);
-				if (d->pb->next)
-					rotate++;
-			}
+			rb(d, 1);
+			if (d->pb->next)
+				rotate++;
 		}
-		while (rotate--)
-			rrb(d, 1);
 	}
+	while (rotate--)
+		rrb(d, 1);
 }
 
-void	A_to_B(t_data*d)
+void	a_to_b(t_data *d)
 {
 	int			p;
 	int			pd;
 	int			rotate;
-	t_partition	*na;
 
 	rotate = 0;
 	p = get_pivo(*d, 0, &pd);
 	if (d->pb->index[0] != d->pb->index[1])
-	{
-		na = ft_lstnew(d->pb->index[0], d->pb->index[0]);
-		ft_lstadd_front(&d->pb, na);
-	}
+		add_partition(d, 1);
 	while (pd > 0)
 	{
-		if (d->list[d->sb -1] < p)
-		{
-			pb(d, 1);
-			d->pa->index[1] -= 1;
-			d->pb->index[0] -= 1;
+		if (d->list[d->sb - 1] < p && push(d, 1))
 			pd--;
-		}
 		else
 		{
 			if (d->pa->next)
@@ -104,52 +78,36 @@ void	A_to_B(t_data*d)
 		rra(d, 1);
 }
 
-void	quick_sort(t_data*d)
+void	quick_sort(t_data *d)
 {
 	while (1)
 	{
 		if (is_sorted(*d))
-			break;
+			break ;
 		else if (is_p_sorted(d->list, d->pa))
-			B_to_A(d);
+		{
+			is_p_sorted(d->list, d->pb);
+			if (d->pb->s == 'n' && (d->pb->index[1] - d->pb->index[0]) == 2)
+			{
+				sb(d, 1);
+				d->pb->s = 's';
+			}
+			b_to_a(d);
+		}
 		else
 		{
 			if (d->pa->index[1] - d->pa->index[0] == 2)
 			{
 				sa(d, 1);
-				d->pa->status = 's';
+				d->pa->s = 's';
 			}
 			else
-				A_to_B(d);
+				a_to_b(d);
 		}
 	}
 }
 
-void	three_numbers(t_data *d)
-{
-	if (d->list[0] > d->list[1] && d->list[1] < d->list[2] &&
-	d->list[0] > d->list[2])
-		ft_putstr("sa\n");
-	else if (d->list[0] > d->list[1] && d->list[1] < d->list[2] &&
-	d->list[2] > d->list[0])
-		ft_putstr("ra\n");
-	else if (d->list[0] < d->list[1] && d->list[1] > d->list[2] &&
-	d->list[2] > d->list[0])
-		ft_putstr("rra\n");
-	else if (d->list[0] < d->list[1] && d->list[1] < d->list[2])
-	{
-		ft_putstr("sa\n");
-		ft_putstr("rra\n");
-	}
-	else if (d->list[0] < d->list[1] && d->list[1] > d->list[2] &&
-	d->list[0] > d->list[2])
-	{
-		ft_putstr("sa\n");
-		ft_putstr("ra\n");
-	}
-}
-
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_data data;
 
@@ -169,5 +127,5 @@ int main(int argc, char **argv)
 		}
 		free_data(&data);
 	}
-	return 0;
+	return (0);
 }
