@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 19:55:14 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/29 20:02:32 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/30 12:39:40 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,44 @@ void	bubble_sort(int *arr, int n)
 			return ;
 		i++;
 	}
+}
+
+void	init_partitions(t_data *d)
+{
+	d->pa = ft_lstnew(0, d->sb);
+	d->pb = ft_lstnew(d->sb, d->sb);
+}
+
+void	free_data(t_data *d)
+{
+	free(d->list);
+	free(d->tmp);
+	delete_lst(&d->pa);
+	delete_lst(&d->pb);
+}
+
+int		get_pivo(t_data d, int side, int *pd)
+{
+	int size;
+	int *arr;
+
+	if (side)
+	{
+		arr = d.tmp + d.pb->index[0];
+		size = d.pb->index[1] - d.pb->index[0];
+		*pd = size / 2;
+		return (arr[size / 2]);
+	}
+	else
+	{
+		arr = d.tmp + d.pa->index[0];
+		size = d.pa->index[1] - d.pa->index[0];
+		if (size % 2 == 0)
+		{
+			*pd = (size / 2);
+			return (arr[(size / 2) - 1]);
+		}
+	}
+	*pd = size / 2;
+	return (arr[size / 2]);
 }

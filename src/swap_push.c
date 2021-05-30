@@ -1,50 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_2.c                                     :+:      :+:    :+:   */
+/*   swap_push.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 18:52:29 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/29 19:02:43 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/30 13:29:54 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include "../push_swap.h"
 
-void		pb(t_data *s)
+void		pb(t_data *s, int t)
 {
 	if (s->sb > 0)
 		s->sb--;
-	ft_putstr("pb\n");
+	if (t)
+		ft_putstr("pb\n");
 }
 
-void		pa(t_data *s)
+void		pa(t_data *s, int t)
 {
 	if (s->sb < s->size)
 		s->sb++;
-	ft_putstr("pa\n");
+	if (t)
+		ft_putstr("pa\n");
 }
 
-void		sa(t_data *s)
+void		sa(t_data *s, int t)
 {
 	if (s->sb >= 2)
 		swap(&s->list[s->sb - 1], &s->list[s->sb - 2]);
-	ft_putstr("sa\n");
+	if (t)
+		ft_putstr("sa\n");
 }
 
-void		sb(t_data *s)
+void		sb(t_data *s, int t)
 {
 	if (s->sb <= s->size - 2)
 		swap(&s->list[s->sb], &s->list[s->sb + 1]);
-	ft_putstr("sb\n");
+	if (t)
+		ft_putstr("sb\n");
 }
 
-void		ss(t_data *s)
+void		ss(t_data *s, int t)
 {
 	if (s->sb >= 2)
 		swap(&s->list[s->sb - 1], &s->list[s->sb - 2]);
 	if (s->sb <= s->size - 2)
 		swap(&s->list[s->sb], &s->list[s->sb + 1]);
-	ft_putstr("ss\n");
+	if (t)
+		ft_putstr("ss\n");
 }

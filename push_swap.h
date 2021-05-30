@@ -6,7 +6,7 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 18:44:04 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/29 18:44:05 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/30 13:30:07 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-
 typedef struct	s_partition
 {
-	int			index[2];
-	char		status;
-	struct		s_partition *next;
+	int					index[2];
+	char				status;
+	struct s_partition	*next;
 }				t_partition;
-
 
 typedef struct	s_data
 {
@@ -33,8 +31,8 @@ typedef struct	s_data
 	int			*tmp;
 	int			size;
 	int			sb;
-	t_partition	*PA;
-	t_partition *PB;
+	t_partition	*pa;
+	t_partition	*pb;
 }				t_data;
 
 int				ft_atoi(const char *str, int *valid);
@@ -49,7 +47,7 @@ t_partition		*ft_lstnew(int f, int l);
 void			ft_lstadd_front(t_partition **alst, t_partition *new);
 void			ft_lstdelete_front(t_partition **alst);
 int				ft_lstsize(t_partition *lst);
-void 			delete_lst(t_partition **head_ref);
+void			delete_lst(t_partition **head_ref);
 void			ft_exit(void);
 int				not_dup(t_data s, int i, int num);
 void			create_stack(t_data*s, int argc, char **argv);
@@ -60,16 +58,17 @@ int				is_sorted(t_data s);
 void			bubble_sort(int *arr, int n);
 int				is_p_sorted(int *l, t_partition *p);
 void			free_data(t_data *d);
-void			pb(t_data*s);
-void			pa(t_data*s);
-void			sa(t_data*s);
-void			sb(t_data*s);
-void			ss(t_data*s);
-void			ra(t_data*s);
-void			rb(t_data*s);
-void			rr(t_data*s);
-void			rra(t_data*s);
-void			rrb(t_data*s);
-void			rrr(t_data*s);
+int				get_pivo(t_data d, int side, int *pd);
+void			pb(t_data*s, int t);
+void			pa(t_data*s, int t);
+void			sa(t_data*s, int t);
+void			sb(t_data*s, int t);
+void			ss(t_data*s, int t);
+void			ra(t_data*s, int t);
+void			rb(t_data*s, int t);
+void			rr(t_data*s, int t);
+void			rra(t_data*s, int t);
+void			rrb(t_data*s, int t);
+void			rrr(t_data*s, int t);
 
 #endif

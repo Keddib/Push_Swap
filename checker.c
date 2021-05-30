@@ -10,14 +10,13 @@ void do_operation(char *str, t_data*s)
 
 int main(int argc, char **argv)
 {
-	t_datas;
+	t_data s;
 	char *inst;
 
 	inst = NULL;
 	if (argc == 1)
 		return (0);
 	create_data(&s, argc, argv);
-	print_data()
-	free(s.list);
+	print_data();
 	return 0;
 }
