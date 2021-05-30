@@ -6,7 +6,7 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 19:59:33 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/29 20:02:23 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/30 15:49:33 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,15 @@ int		ft_strcmp(const char *s1, const char *s2)
 	return (*s1 - *s2);
 }
 
-int		ft_strlen(char *s)
+void	ft_putstr(char *s)
 {
 	int i;
 
 	i = 0;
 	while (s[i])
 		i++;
-	return (i);
-}
-
-void	ft_putstr(char *s)
-{
 	if (s)
 	{
-		write(1, s, ft_strlen(s));
+		write(1, s, i);
 	}
 }
