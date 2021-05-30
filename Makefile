@@ -6,7 +6,7 @@
 #    By: keddib <keddib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/29 18:44:12 by keddib            #+#    #+#              #
-#    Updated: 2021/05/30 17:45:20 by keddib           ###   ########.fr        #
+#    Updated: 2021/05/30 17:54:12 by keddib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,17 +46,17 @@ all:	$(GNL) $(PS) $(CHECKER)
 
 $(PS) : $(SRCS)
 $(CHECKER) : $(CSRCS)
-	$(GCC) -o $(PS) $(SRCS) gnl.a
-	$(GCC) -o $(CHECKER) $(CSRCS) gnl.a
+	@$(GCC) -o $(PS) $(SRCS) gnl.a
+	@$(GCC) -o $(CHECKER) $(CSRCS) gnl.a
 
 $(GNL):
-	$(MAKE) -C $@
+	@$(MAKE) -C $@
 
 clean:
-	rm $(CHECKER) $(PS) gnl.a
+	@rm $(CHECKER) $(PS) gnl.a
 
 fclean: clean
-	rm -rf *.o *.dSYM
+	@rm -rf *.o *.dSYM
 
 re: fclean all
 
