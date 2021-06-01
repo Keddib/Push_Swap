@@ -6,15 +6,15 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 18:44:20 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/29 19:58:20 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/31 16:10:44 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int		is_sorted(t_data s)
+int	is_sorted(t_data s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (s.sb < s.size)
@@ -31,7 +31,7 @@ int		is_sorted(t_data s)
 
 void	swap(int *a, int *b)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = *a;
 	*a = *b;
@@ -40,8 +40,8 @@ void	swap(int *a, int *b)
 
 void	rotate_right(int *arr, int size)
 {
-	int j;
-	int last;
+	int	j;
+	int	last;
 
 	last = arr[size - 1];
 	j = size - 1;
@@ -55,8 +55,8 @@ void	rotate_right(int *arr, int size)
 
 void	rotate_left(int *arr, int size)
 {
-	int j;
-	int first;
+	int	j;
+	int	first;
 
 	first = arr[0];
 	j = 0;
@@ -70,13 +70,14 @@ void	rotate_left(int *arr, int size)
 
 void	create_stack(t_data *s, int argc, char **argv)
 {
-	int i;
-	int valid;
-	int num;
+	int	i;
+	int	valid;
+	int	num;
 
 	s->size = argc - 1;
 	s->sb = s->size;
-	if (!(s->list = (int *)malloc(s->size * sizeof(int))))
+	s->list = (int *)malloc(s->size * sizeof(int));
+	if (!s->list)
 		ft_exit();
 	i = s->size - 1;
 	argv++;

@@ -6,7 +6,7 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:43:00 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/30 17:52:06 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/31 15:58:58 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	create_stack(&d, argc, argv);
-	while (get_next_line(0, &buff))
+	while (get_next_line(&buff))
 	{
 		if (do_operations(&d, buff))
-			continue;
+			continue ;
 		else
 			ft_exit();
 	}

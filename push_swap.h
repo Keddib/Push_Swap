@@ -6,26 +6,25 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 18:44:04 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/30 18:51:49 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/31 15:58:37 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
 
-typedef struct	s_partition
+typedef struct s_partition
 {
 	int					index[2];
 	char				s;
 	struct s_partition	*next;
 }				t_partition;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	int			*list;
 	int			*tmp;
@@ -35,7 +34,7 @@ typedef struct	s_data
 	t_partition	*pb;
 }				t_data;
 
-int				get_next_line(int fd, char **line);
+int				get_next_line(char **line);
 int				ft_atoi(const char *str, int *valid);
 int				ft_isnum(const char *s);
 int				ft_isdigit(int c);

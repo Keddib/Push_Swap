@@ -6,7 +6,7 @@
 #    By: keddib <keddib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/29 18:44:12 by keddib            #+#    #+#              #
-#    Updated: 2021/05/30 18:52:17 by keddib           ###   ########.fr        #
+#    Updated: 2021/06/01 20:36:59 by keddib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,9 @@ PS				= push_swap
 
 CHECKER			= checker
 
-GCC				= gcc -Wall -Wextra -Werror -g -fsanitize=address
+GCC				= gcc -Wall -Wextra -Werror
 
 SRC				= src
-
-GNL				= gn_line/get_next_line.c gn_line/get_next_line_utils.c
 
 SRCS			= push_swap.c						\
 				push_swap_utils.c					\
@@ -40,21 +38,18 @@ CSRCS			= checker.c							\
 				$(SRC)/rrotate.c					\
 				$(SRC)/linkedlist.c					\
 				$(SRC)/sort.c						\
+				$(SRC)/get_next_line.c				\
 
-GNL				= ./gn_line
 
-all:	$(GNL) $(PS) $(CHECKER)
+all:	$(PS) $(CHECKER)
 
 $(PS) : $(SRCS)
 $(CHECKER) : $(CSRCS)
-	@$(GCC) -o $(PS) $(SRCS) gnl.a
-	@$(GCC) -o $(CHECKER) $(CSRCS) gnl.a
-
-$(GNL):
-	@$(MAKE) -C $@
+	@$(GCC) -o $(PS) $(SRCS)
+	@$(GCC) -o $(CHECKER) $(CSRCS)
 
 clean:
-	@rm $(CHECKER) $(PS) gnl.a
+	@rm $(CHECKER) $(PS)
 
 fclean: clean
 	@rm -rf *.o *.dSYM

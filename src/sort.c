@@ -6,13 +6,13 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 19:55:14 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/30 18:48:31 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/31 15:40:28 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int		is_p_sorted(int *l, t_partition *p)
+int	is_p_sorted(int *l, t_partition *p)
 {
 	int		*tmp;
 	int		size;
@@ -39,9 +39,9 @@ int		is_p_sorted(int *l, t_partition *p)
 
 void	bubble_sort(int *arr, int n)
 {
-	int i;
-	int j;
-	int swp;
+	int	i;
+	int	j;
+	int	swp;
 
 	i = 0;
 	while (i < n)
@@ -77,10 +77,10 @@ void	free_data(t_data *d)
 	delete_lst(&d->pb);
 }
 
-int		get_pivo(t_data d, int side, int *pd)
+int	get_pivo(t_data d, int side, int *pd)
 {
-	int size;
-	int *arr;
+	int	size;
+	int	*arr;
 
 	if (side)
 	{

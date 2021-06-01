@@ -6,19 +6,19 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 18:44:29 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/29 20:01:05 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/31 15:57:54 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void		ft_exit(void)
+void	ft_exit(void)
 {
-	printf("ERROR\n");
+	write(2, "ERROR\n", 5);
 	exit(1);
 }
 
-int			ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c == 45)
 		return (1);
@@ -28,7 +28,7 @@ int			ft_isdigit(int c)
 		return (0);
 }
 
-int			ft_isnum(const char *s)
+int	ft_isnum(const char *s)
 {
 	while (*s)
 	{
@@ -40,7 +40,7 @@ int			ft_isnum(const char *s)
 	return (1);
 }
 
-int			not_dup(t_data s, int i, int num)
+int	not_dup(t_data s, int i, int num)
 {
 	i++;
 	while (i < s.size)
@@ -52,11 +52,11 @@ int			not_dup(t_data s, int i, int num)
 	return (1);
 }
 
-int			ft_atoi(const char *str, int *valid)
+int	ft_atoi(const char *str, int *valid)
 {
 	int	i;
 	int	p;
-	int r;
+	int	r;
 
 	i = 0;
 	p = 1;

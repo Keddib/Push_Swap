@@ -6,7 +6,7 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 18:50:40 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/30 18:51:11 by keddib           ###   ########.fr       */
+/*   Updated: 2021/05/31 15:48:17 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	add_partition(t_data *d, int p)
 	}
 }
 
-int		push(t_data *d, int a)
+int	push(t_data *d, int a)
 {
 	if (a)
 	{
@@ -47,22 +47,22 @@ int		push(t_data *d, int a)
 
 void	three_numbers(t_data *d)
 {
-	if (d->list[0] > d->list[1] && d->list[1] < d->list[2] &&
-	d->list[0] > d->list[2])
+	if (d->list[0] > d->list[1] && d->list[1] < d->list[2]
+		&& d->list[0] > d->list[2])
 		ft_putstr("sa\n");
-	else if (d->list[0] > d->list[1] && d->list[1] < d->list[2] &&
-	d->list[2] > d->list[0])
+	else if (d->list[0] > d->list[1] && d->list[1] < d->list[2]
+		&& d->list[2] > d->list[0])
 		ft_putstr("ra\n");
-	else if (d->list[0] < d->list[1] && d->list[1] > d->list[2] &&
-	d->list[2] > d->list[0])
+	else if (d->list[0] < d->list[1] && d->list[1] > d->list[2]
+		&& d->list[2] > d->list[0])
 		ft_putstr("rra\n");
 	else if (d->list[0] < d->list[1] && d->list[1] < d->list[2])
 	{
 		ft_putstr("sa\n");
 		ft_putstr("rra\n");
 	}
-	else if (d->list[0] < d->list[1] && d->list[1] > d->list[2] &&
-	d->list[0] > d->list[2])
+	else if (d->list[0] < d->list[1] && d->list[1] > d->list[2]
+		&& d->list[0] > d->list[2])
 	{
 		ft_putstr("sa\n");
 		ft_putstr("ra\n");

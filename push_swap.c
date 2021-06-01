@@ -6,15 +6,15 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 18:43:46 by keddib            #+#    #+#             */
-/*   Updated: 2021/05/30 18:51:07 by keddib           ###   ########.fr       */
+/*   Updated: 2021/06/01 20:27:07 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int		b_to_a_direct(t_data *d)
+int	b_to_a_direct(t_data *d)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < d->pb->index[1] - d->pb->index[0])
@@ -40,6 +40,12 @@ void	b_to_a(t_data *d)
 	p = get_pivo(*d, 1, &pd);
 	while (pd > 0)
 	{
+		if (d->pb->next == NULL)
+		{
+			if (d->list[d->size - 1] > p)
+				if (d->list[d->sb] > d->list[d->size - 1])
+					rrb(d, 1);
+		}
 		if (d->list[d->sb] > p && push(d, 0))
 			pd--;
 		else
@@ -65,6 +71,12 @@ void	a_to_b(t_data *d)
 		add_partition(d, 1);
 	while (pd > 0)
 	{
+		if (d->pa->next == NULL)
+		{
+			if (d->list[0] < p)
+				if (d->list[0] < d->list[d->sb - 1])
+					rra(d, 1);
+		}
 		if (d->list[d->sb - 1] < p && push(d, 1))
 			pd--;
 		else
@@ -107,9 +119,9 @@ void	quick_sort(t_data *d)
 	}
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
 
 	if (argc == 1)
 		return (0);
