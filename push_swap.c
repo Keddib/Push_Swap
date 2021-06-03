@@ -6,7 +6,7 @@
 /*   By: keddib <keddib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 18:43:46 by keddib            #+#    #+#             */
-/*   Updated: 2021/06/01 20:27:07 by keddib           ###   ########.fr       */
+/*   Updated: 2021/06/01 20:44:38 by keddib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	b_to_a(t_data *d)
 	p = get_pivo(*d, 1, &pd);
 	while (pd > 0)
 	{
-		if (d->pb->next == NULL)
+		if (d->pb->next == NULL && d->size == 5)
 		{
 			if (d->list[d->size - 1] > p)
 				if (d->list[d->sb] > d->list[d->size - 1])
@@ -71,7 +71,7 @@ void	a_to_b(t_data *d)
 		add_partition(d, 1);
 	while (pd > 0)
 	{
-		if (d->pa->next == NULL)
+		if (d->pa->next == NULL && d->size == 5)
 		{
 			if (d->list[0] < p)
 				if (d->list[0] < d->list[d->sb - 1])
